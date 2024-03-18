@@ -1,5 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './root';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+/**
+ * import React from 'react';
+import ReactDOM from 'react-dom';
 import { ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -23,3 +35,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+ * 
+ */

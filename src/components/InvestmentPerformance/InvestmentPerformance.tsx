@@ -10,7 +10,10 @@ interface InvestmentPerformanceProps {
 const InvestmentPerformance: React.FC<InvestmentPerformanceProps> = ({ data }) => (
   <Box>
     <Typography variant="h6">Investment Performance</Typography>
-    <LineChart width={600} height={400} data={data}>
+    <LineChart width={600} height={400} data={data.map(investment => ({
+      name: investment.name,
+      value: investment.value,
+    }))}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />

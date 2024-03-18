@@ -15,11 +15,12 @@ const InvestmentPerformance = lazy(() => import('./InvestmentPerformance'));
 const PersonalFinanceDashboard: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const userData = useSelector((state: RootState) => state.user.data);
-  const { loading, error } = useQuery(USER_DATA_QUERY, {
-    onCompleted: () => dispatch(fetchUserData()),
-  });
+  const { loading, error, data } = useQuery(USER_DATA_QUERY);
 
-  if (loading) {
+  if (data){
+    dispatch(fetchUserData(data.user));
+  }
+  if (loading && !data) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
         <CircularProgress />
@@ -31,18 +32,18 @@ const PersonalFinanceDashboard: React.FC = () => {
     return <div>Error! {error.message}</div>;
   }
 
-  return (
-    <Box display="flex" flexDirection="column" height="100vh">
-      <Box display="flex" flexWrap="wrap" p={2}>
-        <Suspense fallback={<CircularProgress />}>
-          <AccountBalances data={userData.accounts} />
-          <TransactionHistory data={userData.transactions} />
-          <SpendingCategories data={userData.transactions} />
-          <InvestmentPerformance data={userData.investments} />
-        </Suspense>
+    return (
+      <Box display="flex" flexDirection="column" height="100vh">
+        <Box display="flex" flexWrap="wrap" p={2}>
+          <Suspense fallback={<CircularProgress />}>
+            <AccountBalances data={userData?.accounts || []} />
+            <TransactionHistory data={userData?.transactions || []} />
+            <SpendingCategories data={userData?.transactions || []} />
+            <InvestmentPerformance data={userData?.investments || []} />
+          </Suspense>
+        </Box>
       </Box>
-    </Box>
-  );
+    );
 };
 
 export default PersonalFinanceDashboard;

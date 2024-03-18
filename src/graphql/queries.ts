@@ -1,25 +1,34 @@
 import { gql } from '@apollo/client';
 
 export const USER_DATA_QUERY = gql`
-  query GetUserData {
-    user {
-      accounts {
-        id
-        name
-        balance
-      }
-      transactions {
-        id
-        date
-        description
-        amount
-        category
-      }
-      investments {
-        id
-        name
-        value
-      }
-    }
+  type Account {
+    id: ID!
+    name: String!
+    balance: Float!
+  }
+
+  type Transaction {
+    id: ID!
+    amount: Float!
+    description: String!
+    date: String!
+    category: String!
+  }
+
+  type Investment {
+    id: ID!
+    name: String!
+    value: Float!
+  }
+
+  type User {
+    accounts: [Account]
+    transactions: [Transaction]
+    investments: [Investment]
+  }
+
+  type Query {
+    user: User
+    transactions: [Transaction]
   }
 `;
