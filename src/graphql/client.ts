@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'YOUR_GRAPHQL_API_ENDPOINT',
+  uri: 'http://localhost:4000', 
   cache: new InMemoryCache(),
 });
 

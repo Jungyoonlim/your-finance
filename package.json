@@ -16,6 +16,7 @@
     "@types/node": "^16.18.89",
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
+    "apollo-server": "^3.13.0",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,5 +52,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jungyoonlim/your-finance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jungyoonlim/your-finance/issues"
+  },
+  "homepage": "https://github.com/Jungyoonlim/your-finance#readme"
 }
